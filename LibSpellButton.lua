@@ -24,19 +24,13 @@ function ButtonMixin:init(spellId, name, height, width)
 
     ---@type Frame
     self.btn = _G.CreateFrame("Button", name, _G.UIParent, "ActionButtonTemplate,SecureActionButtonTemplate")
-    self.btn:SetAttribute("type1", "spell")
+    self.icon = _G[name .. "Icon"]
     self.btn.spellID = spellId
     self.btn:SetAttribute("spell", spellInfo['name'])
     self:SetIcon(spellInfo['iconID'])
 
     self.btn:SetSize(self.width, self.height)
     self.btn:RegisterForClicks("AnyDown", "AnyUp")
-
-    self.btn.Border = self.btn:CreateTexture(name .. "Border", "OVERLAY", "ActionBarFlyoutButton-IconFrame")
-    self.btn.Border:SetSize(self.width, self.height)
-
-    self.btn:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress")
-    self.btn:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
 
     self.btn.Cooldown = _G.CreateFrame("Cooldown", name .. "Cooldown", self.btn, "CooldownFrameTemplate")
     self:cooldown()
@@ -55,7 +49,6 @@ function ButtonMixin:SetSpell()
 end
 
 function ButtonMixin:SetIcon(iconID)
-    self.icon = self.btn:CreateTexture(self.name .. "Icon", "ARTWORK")
     self.icon:SetTexture(iconID)
     self.icon:SetSize(self.width, self.height)
     self.icon:SetAllPoints()
