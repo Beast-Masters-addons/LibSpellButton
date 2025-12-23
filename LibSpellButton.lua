@@ -20,14 +20,10 @@ function ButtonMixin:init(spellId, name, height, width)
     self.height = height or 38
     self.width = width or 38
 
-    local spellInfo = _G.C_Spell.GetSpellInfo(spellId)
-
     ---@type Frame
     self.btn = _G.CreateFrame("Button", name, _G.UIParent, "ActionButtonTemplate,SecureActionButtonTemplate")
     self.icon = _G[name .. "Icon"]
-    self.btn.spellID = spellId
-    self.btn:SetAttribute("spell", spellInfo['name'])
-    self:SetIcon(spellInfo['iconID'])
+    self:setSpell(spellId)
 
     self.btn:SetSize(self.width, self.height)
     self.btn:RegisterForClicks("AnyDown", "AnyUp")
@@ -44,8 +40,11 @@ function ButtonMixin:init(spellId, name, height, width)
     self.btn:Show()
 end
 
-function ButtonMixin:SetSpell()
-
+function ButtonMixin:setSpell(spellID)
+    self.spellInfo = _G.C_Spell.GetSpellInfo(spellID)
+    self.btn:SetAttribute("type1", "spell")
+    self.btn:SetAttribute("spell", self.spellInfo['name'])
+    self:SetIcon(self.spellInfo['iconID'])
 end
 
 function ButtonMixin:SetIcon(iconID)
