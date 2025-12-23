@@ -115,9 +115,18 @@ function ButtonMixin:setItem(bag, slot)
     local itemInfo = _G.C_Container.GetContainerItemInfo(bag, slot);
     self.icon:SetTexture(itemInfo['iconFileID'])
     self.itemID = itemInfo['itemID']
-    --C_Item.GetItemCount
     self:setCount(C_Item.GetItemCount(self.itemID))
+    --@debug@
     print('Set button item', itemInfo['hyperlink'])
+    --@end-debug@
+end
+
+function ButtonMixin:removeItem()
+    self:setCount("")
+    self:SetIcon(self.spellInfo['iconID'])
+    self.btn:ClearAttribute('target-bag')
+    self.btn:ClearAttribute('target-slot')
+    self.btn:ClearAttribute("target-item")
 end
 
 function ButtonMixin:setCount(count)
