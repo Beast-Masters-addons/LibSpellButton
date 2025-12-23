@@ -69,13 +69,10 @@ function ButtonMixin:movable(positionCallback)
         button:StartMoving()
     end)
     self.btn:SetScript("OnDragStop", function(button)
-        local offsetX, offsetY = button:GetPosition()
+        local offsetX, offsetY = self:getPosition()
         if positionCallback then
             positionCallback(offsetX, offsetY)
         end
-        --FOM_Config.buttonX = offsetX
-        --FOM_Config.buttonY = offsetY
-        --FOM_Config['buttonRelative'] = 'absolute'
         button:StopMovingOrSizing()
     end)
 end
@@ -100,6 +97,14 @@ end
 ---@param y number Vertical offset from the relative point
 function ButtonMixin:setPoint(point, relativeTo, relativeToPoint, x, y)
     self.btn:SetPoint(point, relativeTo, relativeToPoint, x, y);
+end
+
+function ButtonMixin:getPosition()
+    local point, relativeTo, relativePoint, offsetX, offsetY = self.btn:GetPoint(1)
+    --@debug@
+    print('Button position', point, relativeTo, relativePoint, offsetX, offsetY)
+    --@end-debug@
+    return ('%d'):format(offsetX), ('%d'):format(offsetY)
 end
 
 function ButtonMixin:setItem(bag, slot)
