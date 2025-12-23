@@ -1,0 +1,9 @@
+## Interface: 110207, 50503, 38000, 20505, 11508
+## Title: Lib: SpellButton
+## Notes: A helper library to create buttons to cast spells
+## Version: @project-version@
+## OptionalDeps: AceEvent-3.0
+## IconTexture: Interface\Icons\inv_misc_gear_08
+## X-Website: https://github.com/Beast-Masters-addons/LibSpellButton
+
+LibSpellButton.lua
