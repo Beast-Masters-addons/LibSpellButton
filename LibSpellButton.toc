@@ -6,4 +6,8 @@
 ## IconTexture: Interface\Icons\inv_misc_gear_08
 ## X-Website: https://github.com/Beast-Masters-addons/LibSpellButton
 
+#@no-lib-strip@
+libs.xml
+#@end-no-lib-strip@
+
 LibSpellButton.lua
