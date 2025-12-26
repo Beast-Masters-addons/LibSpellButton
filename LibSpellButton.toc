@@ -5,6 +5,7 @@
 ## OptionalDeps: AceEvent-3.0
 ## IconTexture: Interface\Icons\inv_misc_gear_08
 ## X-Website: https://github.com/Beast-Masters-addons/LibSpellButton
+## X-Wago-ID: BNBep0Gx
 
 #@no-lib-strip@
 libs.xml
